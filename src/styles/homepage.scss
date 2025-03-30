@@ -1,0 +1,41 @@
+@import 'variables';
+
+.homepage {
+    text-align: center;
+    padding: 80px 20px 20px;
+    color: $color-text;
+    min-height: 100vh;
+  
+    .image-container {
+      margin: 20px auto;
+      padding: 15px;
+      border-radius: 10px;
+      border: $color-border;
+      background-color: $bg-color; 
+      width: 80%;
+      max-width: 600px;
+  
+      h2 {
+        font-size: 1.8em;
+        margin-bottom: 5px;
+      }
+  
+      p {
+        font-size: 1em;
+        margin: 5px 0;
+      }
+  
+      .image {
+        width: 100%;
+        border-radius: 8px;
+        margin: 10px 0;
+      }
+  
+      .description {
+        margin-top: 10px;
+        font-size: 1.1em;
+        line-height: 1.5;
+      }
+    }
+  }
+  

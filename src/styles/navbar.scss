@@ -1,0 +1,50 @@
+@import 'variables';
+
+.navbar {
+  background-color: $bg-color;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: $bg-shadow-nav;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+    z-index: 10;
+  }
+
+  .navbar__left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .navbar__title {
+    color: $color-text;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px; 
+    text-decoration: none;
+  }
+  
+  .navbar__list {
+    display: flex;
+    list-style: none;
+    margin-right: 30px;
+    padding: 0;
+    gap: 30px;
+  }
+  
+  .navbar__link {
+    display: inline-block;
+    color: $color-text;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+
+   &:hover {
+    transform: scale(1.1);
+    color: $color-hover;
+  }
+}

@@ -1,0 +1,213 @@
+/*@import 'variables';
+
+.notifications-page {
+  padding: 80px 20px;
+  min-height: 100vh;
+  text-align: center;
+  color: $color-text;
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: $color-hover;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .notifications-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .notification-card {
+    background: $bg-color;
+    border: $color-border;
+    border-radius: 12px;
+    padding: 25px;
+    width: 350px;
+    min-height: 200px;
+    text-align: left;
+    backdrop-filter: blur(10px);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.8);
+    }
+
+    .message-type {
+      font-size: 1.6rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: $color-text;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .message-time {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: $color-text-secondary;
+      opacity: 0.8;
+    }
+
+    .message-body {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 15px;
+      color: #e0e0e0;
+    }
+
+    .message-link {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: $color-hover;
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+
+      &:hover {
+        color: #00bfff;
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 10px;
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .notification-card {
+      width: 90%;
+    }
+  }
+}
+*/
+@import 'variables';
+
+.notifications-page {
+  padding: 80px 20px;
+  min-height: 100vh;
+  text-align: center;
+  color: $color-text;
+
+  .page-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: $color-hover;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .notifications-list {
+    display: block;
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .notification-card {
+    background: $bg-color;
+    border: $color-border;
+    border-radius: 12px;
+    padding: 40px;
+    width: 100%;
+    max-width: 900px;
+    min-height: 300px;
+    margin-bottom: 40px;
+    text-align: left;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    position: relative;
+
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.8);
+    }
+
+    .notification-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .message-type {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: $color-text;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .message-time {
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+      color: $color-text-secondary;
+      opacity: 0.8;
+    }
+
+    .message-body {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #e0e0e0;
+      text-align: justify;
+    }
+
+    .message-link {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: $color-hover;
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+
+      &:hover {
+        color: #00bfff;
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .continue-reading {
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: $color-hover;
+      text-decoration: none;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+
+      &:hover {
+        color: #00bfff;
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 10px;
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .notification-card {
+      width: 100%;
+      padding: 20px;
+    }
+
+    .notification-image {
+      height: 200px;
+    }
+
+    .message-body {
+      font-size: 1.1rem;
+    }
+  }
+}
+
