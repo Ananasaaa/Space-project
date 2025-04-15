@@ -10,7 +10,7 @@ export const nasaApi = createApi({
       query: () => ({
         url: 'planetary/apod',
         params: {
-          api_key: 'LrQU3R7RaU85NAm7kxkfIrP6fESwdMcEgsWJg7XC',
+          api_key: process.env.REACT_APP_NASA_KEY as string,
         },
       }),
     }),
@@ -21,7 +21,7 @@ export const nasaApi = createApi({
           sol,
           page,
           ...(camera ? { camera } : {}),
-          api_key: 'LrQU3R7RaU85NAm7kxkfIrP6fESwdMcEgsWJg7XC',
+          api_key: process.env.REACT_APP_NASA_KEY as string,
         },
       }),
     }),
