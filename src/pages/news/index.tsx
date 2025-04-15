@@ -1,5 +1,5 @@
-import { mockNews } from '../mocks/mockNews';
-import '../styles/newspage.scss';
+import { mockNews } from '../../mocks/mockNews';
+import '../news/newspage.scss';
 
 const backgroundStyle = {
   backgroundImage: `url(${process.env.PUBLIC_URL}/img/bg_newspage.jpg)`,

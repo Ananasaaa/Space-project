@@ -1,7 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { nasaApi } from './apiSlice';
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    [nasaApi.reducerPath]: nasaApi.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(nasaApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
