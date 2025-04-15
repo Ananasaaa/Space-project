@@ -15,7 +15,7 @@ export const nasaApi = createApi({
       }),
     }),
     getMarsPhotos: builder.query({
-      query: ({ sol = 1000, camera, page = 1 }) => ({
+      query: ({ sol = 4000, camera, page = 1 }) => ({
         url: 'mars-photos/api/v1/rovers/curiosity/photos',
         params: {
           sol,
