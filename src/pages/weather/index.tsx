@@ -1,5 +1,5 @@
-import { mockWeather } from '../mocks/mockWeather';
-import '../styles/weatherpage.scss';
+import { mockWeather } from '../../mocks/mockWeather';
+import '../weather/weatherpage.scss';
 
 const backgroundStyle = {
   backgroundImage: `url(${process.env.PUBLIC_URL}/img/bg_weatherpage.jpg)`,

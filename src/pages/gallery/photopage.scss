@@ -1,0 +1,113 @@
+@import '../../styles/variables';
+
+.photopage {
+  background-color: black;
+  padding: 80px 20px 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  .sol-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: $bg-color;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+    label {
+      font-size: 1rem;
+      margin: 0 auto;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 5px;
+    }
+
+    input {
+      padding: 8px 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid $color-border;
+      background-color: transparent;
+      font-size: 14px;
+      color: white;
+    }
+
+    button {
+      padding: 8px 18px;
+      margin: 0 auto;
+      background-color: transparent;
+      color: white;
+      border: 2px solid $color-border;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $color-hover;
+      }
+    }
+  }
+  .photo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+  }
+}
+
+.photo-container {
+  background: transparent;
+  background-color: $bg-color;
+  border: $color-border; 
+  border-radius: 10px;
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6); 
+  }
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 15px 0;
+  font-weight: 600;
+}
+
+p {
+  font-size: 1rem;
+  color: $color-text;
+  margin: 5px 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 0 0 10px 10px;
+}
+
+@media (max-width: 768px) {
+  .photopage {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .photo-container {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
