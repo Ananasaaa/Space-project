@@ -24,7 +24,7 @@ describe('Weatherpage component', () => {
 
     expect(screen.getByText('Weather on Mars')).toBeInTheDocument();
     expect(screen.getByText('Sol 1000')).toBeInTheDocument();
-    expect(screen.getByText('4/25/2024')).toBeInTheDocument(); // дата в формате MM/DD/YYYY
+    expect(screen.getByText('4/25/2024')).toBeInTheDocument();
     expect(screen.getByText('Max: -50°C')).toBeInTheDocument();
     expect(screen.getByText('Min: -80°C')).toBeInTheDocument();
     expect(screen.getByText('Average: -65°C')).toBeInTheDocument();
