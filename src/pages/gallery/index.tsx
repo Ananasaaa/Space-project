@@ -38,18 +38,22 @@ const Photopage = () => {
       </form>
 
       {isLoading && <div>Load photos...</div>}
-      {error && <div>Ошибка при загрузке фото 😞</div>}
+      {error && <div>Ошибка при загрузке фото </div>}
       {photos.length === 0 && !isLoading && !error && (
         <p>Нет фото для этого sol.</p>
       )}
 
-      <div className="photo-grid">
+      <div className="photo-grid fade-in">
         {photos.slice(0, 5).map((photo: any) => (
           <div className="photo-container" key={photo.id}>
             <h3>{photo.camera.full_name}</h3>
             <p>Sol: {photo.sol}</p>
             <p>Date on Earth: {photo.earth_date}</p>
-            <img src={photo.img_src} alt={photo.camera.full_name} />
+            <img
+              src={photo.img_src}
+              alt={photo.camera.full_name}
+              loading="lazy"
+            />
           </div>
         ))}
       </div>
