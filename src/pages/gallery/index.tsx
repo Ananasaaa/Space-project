@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useGetMarsPhotosQuery } from '../../redux/apiSlice';
 import '../gallery/photopage.scss';
+import Loader from '../../components/loader/Loader';
+import PhotoItem from '../../components/photo/PhotoItem';
 
 const backgroundStyle = {
   backgroundImage: `url(${process.env.PUBLIC_URL}/img/bg_photopage.jpg)`,
@@ -11,48 +13,70 @@ const backgroundStyle = {
 
 const Photopage = () => {
   const [sol, setSol] = useState(1000);
+  const [inputValue, setInputValue] = useState('1000');
 
   const { data, error, isLoading } = useGetMarsPhotosQuery({
     sol: Number(sol),
     page: 1,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const input = form.elements.namedItem('sol') as HTMLInputElement;
-    const parsed = parseInt(input.value, 10);
-    if (!isNaN(parsed)) {
-      setSol(parsed);
-    }
-  };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const parsed = parseInt(inputValue, 10);
+      if (!isNaN(parsed)) {
+        setSol(parsed);
+      }
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [inputValue]);
 
   const photos = data?.photos || [];
 
+  if (isLoading) {
+    return (
+      <div className="photopage" style={backgroundStyle}>
+        <Loader />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="photopage" style={backgroundStyle}>
+        <div className="error">Error</div>
+      </div>
+    );
+  }
+  console.log('photos:', photos);
+
   return (
     <div className="photopage" style={backgroundStyle}>
-      <form onSubmit={handleSubmit} className="sol-form">
-        <label htmlFor="sol">Enter Sol (day on Mars):</label>
-        <input id="sol" type="text" />
-        <button type="submit">Load</button>
-      </form>
+      <div className="sol-block">
+        <form className="sol-form" onSubmit={(e) => e.preventDefault()}>
+          <label htmlFor="sol">Enter Sol (day on Mars):</label>
+          <input
+            id="sol"
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
+        </form>
 
-      {isLoading && <div>Load photos...</div>}
-      {error && <div>Ошибка при загрузке фото 😞</div>}
-      {photos.length === 0 && !isLoading && !error && (
-        <p>Нет фото для этого sol.</p>
-      )}
-
-      <div className="photo-grid">
-        {photos.slice(0, 5).map((photo: any) => (
-          <div className="photo-container" key={photo.id}>
-            <h3>{photo.camera.full_name}</h3>
-            <p>Sol: {photo.sol}</p>
-            <p>Date on Earth: {photo.earth_date}</p>
-            <img src={photo.img_src} alt={photo.camera.full_name} />
+        {photos.length === 0 && !isLoading && !error && (
+          <div className="no-photos">
+            <p>No photos found for this Sol. Please try another day!</p>
           </div>
-        ))}
+        )}
       </div>
+
+      {photos.length > 0 && (
+        <div className="photo-grid fade-in">
+          {photos.slice(0, 5).map((photo: any) => (
+            <PhotoItem key={photo.id} photo={photo} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

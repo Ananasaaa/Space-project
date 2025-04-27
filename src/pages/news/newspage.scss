@@ -5,6 +5,7 @@
   min-height: 100vh;
   text-align: center;
   color: $color-text;
+  background-attachment: fixed;
 
   .page-title {
     font-size: 3rem;
@@ -121,4 +122,18 @@
     }
   }
 }
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 

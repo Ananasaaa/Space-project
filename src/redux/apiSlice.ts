@@ -25,7 +25,33 @@ export const nasaApi = createApi({
         },
       }),
     }),
+    getMarsWeather: builder.query({
+      query: () => ({
+        url: 'insight_weather/',
+        params: {
+          api_key: process.env.REACT_APP_NASA_KEY as string,
+          feedtype: 'json',
+          ver: '1.0',
+        },
+      }),
+    }),
+    getNasaNotifications: builder.query({
+      query: ({ startDate, endDate }) => ({
+        url: 'DONKI/notifications',
+        params: {
+          startDate,
+          endDate,
+          type: 'all',
+          api_key: process.env.REACT_APP_NASA_KEY as string,
+        },
+      }),
+    }),
   }),
 });
 
-export const { useGetSpaceImageQuery, useGetMarsPhotosQuery } = nasaApi;
+export const {
+  useGetSpaceImageQuery,
+  useGetMarsPhotosQuery,
+  useGetMarsWeatherQuery,
+  useGetNasaNotificationsQuery,
+} = nasaApi;
