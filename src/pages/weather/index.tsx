@@ -1,6 +1,8 @@
 import { useGetMarsWeatherQuery } from '../../redux/apiSlice';
 import '../weather/weatherpage.scss';
 import { useState } from 'react';
+import Loader from '../../components/loader/Loader';
+import { convertTemp } from '../../utils/convertTemp';
 
 const backgroundStyle = {
   backgroundImage: `url(${process.env.PUBLIC_URL}/img/bg_weatherpage.jpg)`,
@@ -13,13 +15,8 @@ const Weatherpage = () => {
   const { data, isLoading, isError } = useGetMarsWeatherQuery(null);
   const [unit, setUnit] = useState<'C' | 'F'>('C');
 
-  if (isLoading) return <p className="loading">Loading...</p>;
+  if (isLoading) return <Loader />;
   if (isError || !data) return <p className="error">Error loading data</p>;
-
-  const convertTemp = (tempC: number | undefined) => {
-    if (tempC === undefined) return 'N/A';
-    return unit === 'C' ? `${tempC}°C` : `${(tempC * 9) / 5 + 32}°F`;
-  };
 
   return (
     <div className="weatherpage" style={backgroundStyle}>
@@ -45,11 +42,13 @@ const Weatherpage = () => {
 
                 <div className="temperature">
                   <p className="temp-high">
-                    Max: {convertTemp(solData.AT?.mx)}
+                    Max: {convertTemp(solData.AT?.mx, unit)}
                   </p>
-                  <p className="temp-low">Min: {convertTemp(solData.AT?.mn)}</p>
+                  <p className="temp-low">
+                    Min: {convertTemp(solData.AT?.mn, unit)}
+                  </p>
                   <p className="temp-avg">
-                    Average: {convertTemp(solData.AT?.av)}
+                    Average: {convertTemp(solData.AT?.av, unit)}
                   </p>
                 </div>
 

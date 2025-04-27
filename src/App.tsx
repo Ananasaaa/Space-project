@@ -8,9 +8,11 @@ function App() {
   return (
     <>
       <Navbar />
-      <Suspense fallback={<Loader />}>
-        <AnimatedRoutes />
-      </Suspense>
+      <div style={{ backgroundColor: 'black', minHeight: '100vh' }}>
+        <Suspense fallback={<Loader />}>
+          <AnimatedRoutes />
+        </Suspense>
+      </div>
     </>
   );
 }
