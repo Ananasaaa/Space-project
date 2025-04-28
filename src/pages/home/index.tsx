@@ -36,7 +36,7 @@ const Homepage = () => {
       const dates = getLastDates();
       const requests = dates.map((date) =>
         fetch(
-          `https://api.nasa.gov/planetary/apod?date=${date}&api_key=DEMO_KEY`
+          `https://api.nasa.gov/planetary/apod?date=${date}&api_key=${process.env.REACT_APP_NASA_KEY}`
         ).then((res) => res.json())
       );
       const results = await Promise.all(requests);
