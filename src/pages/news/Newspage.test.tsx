@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Newspage from './index';
 import { useGetNasaNotificationsQuery } from '../../redux/apiSlice';
 
@@ -21,13 +21,7 @@ describe('Newspage component', () => {
       isError: false,
     });
 
-    render(<Newspage />);
-
-    expect(screen.getByText('NASA Notifications')).toBeInTheDocument();
-    expect(screen.getByText('Test Type')).toBeInTheDocument();
-    expect(screen.getByText('Test summary text')).toBeInTheDocument();
-    expect(
-      screen.getByRole('link', { name: /View Full Message/i })
-    ).toBeInTheDocument();
+    const { asFragment } = render(<Newspage />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

@@ -1,11 +1,14 @@
-import '../home/homepage.scss';
+import './homepage.scss';
 import { useGetSpaceImageQuery } from '../../redux/apiSlice';
-import getError from '../../utils/getError';
-import Loader from '../../components/loader/Loader';
+import renderError from '../../utils/error/renderError';
+import Loader from '../../components/common/loader/Loader';
 import { useState, useEffect } from 'react';
-import { getLastDates } from '../../utils/getLastDates';
-import PhotoModal from '../../components/modal/PhotoModal';
-import PhotoCards from '../../components/cards/PhotoCards';
+
+import PhotoModal from '../../components/common/modal/PhotoModal';
+
+import { fetchLastSevenImg } from '../../utils/fetch/fetchLastSevenImg';
+import TodayImage from '../../components/home/TodayImage';
+import GalleryView from '../../components/home/GalleryView';
 
 const backgroundStyle = {
   backgroundImage: `url(${process.env.PUBLIC_URL}/img/bg_homepage.jpg)`,
@@ -33,13 +36,7 @@ const Homepage = () => {
     setShowGallery(true);
     setGalleryLoading(true);
     try {
-      const dates = getLastDates();
-      const requests = dates.map((date) =>
-        fetch(
-          `https://api.nasa.gov/planetary/apod?date=${date}&api_key=${process.env.REACT_APP_NASA_KEY}`
-        ).then((res) => res.json())
-      );
-      const results = await Promise.all(requests);
+      const results = await fetchLastSevenImg(process.env.REACT_APP_NASA_KEY!);
       setGalleryPhotos(results);
     } catch (err) {
       setGalleryError(err);
@@ -72,7 +69,7 @@ const Homepage = () => {
     );
   }
 
-  const errorJSX = getError(error);
+  const errorJSX = renderError(error);
   if (errorJSX) {
     return (
       <div className="homepage" style={backgroundStyle}>
@@ -84,51 +81,17 @@ const Homepage = () => {
   return (
     <div className="homepage" style={backgroundStyle}>
       {!showGallery ? (
-        <>
-          <h1>Space Image of the Day Viewer</h1>
-          <div className="image-container fade-in">
-            <h2>{data?.title}</h2>
-            <p>{data?.date}</p>
-            <img
-              src={data?.url}
-              alt={data?.title}
-              loading="lazy"
-              className="image"
-            />
-            <p className="description">{data?.explanation}</p>
-          </div>
-          <button className="gallery-button" onClick={handleShowGallery}>
-            See last 7 days
-          </button>
-        </>
+        <TodayImage data={data} onOpenGallery={handleShowGallery} />
       ) : (
-        <>
-          <button className="gallery-button" onClick={handleBack}>
-            Back to todays image
-          </button>
-          <h1>Last 7 Days Gallery</h1>
-          {galleryLoading ? (
-            <Loader />
-          ) : galleryError ? (
-            getError(galleryError)
-          ) : (
-            <div className="gallery">
-              {galleryPhotos
-                .filter((photo) => photo.media_type === 'image')
-                .map((photo, index) =>
-                  photo.url ? (
-                    <PhotoCards
-                      key={index}
-                      photo={photo}
-                      isLiked={likedPhotos.includes(photo.url)}
-                      onLike={toggleLike}
-                      onOpen={setSelectedPhoto}
-                    />
-                  ) : null
-                )}
-            </div>
-          )}
-        </>
+        <GalleryView
+          photos={galleryPhotos}
+          loading={galleryLoading}
+          error={galleryError}
+          likedPhotos={likedPhotos}
+          onLike={toggleLike}
+          onBack={handleBack}
+          onOpenModal={setSelectedPhoto}
+        />
       )}
       {selectedPhoto && (
         <PhotoModal

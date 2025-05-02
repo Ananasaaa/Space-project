@@ -2,10 +2,10 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { lazy } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const Homepage = lazy(() => import('../pages/home/'));
-const Photopage = lazy(() => import('../pages/gallery/'));
-const Weatherpage = lazy(() => import('../pages/weather/'));
-const Newspage = lazy(() => import('../pages/news/'));
+const Homepage = lazy(() => import('../../pages/home/'));
+const Photopage = lazy(() => import('../../pages/gallery/'));
+const Weatherpage = lazy(() => import('../../pages/weather/'));
+const Newspage = lazy(() => import('../../pages/news/'));
 
 const AnimatedRoutes = () => {
   const location = useLocation();

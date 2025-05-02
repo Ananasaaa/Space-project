@@ -1,4 +1,4 @@
-import '../../components/cards/photoCards.scss';
+import './photoCards.scss';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 interface PhotoCardProps {

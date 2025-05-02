@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Homepage from './index';
 import { useGetSpaceImageQuery } from '../../redux/apiSlice';
 
@@ -17,16 +17,7 @@ describe('Homepage component', () => {
       error: null,
     });
 
-    render(<Homepage />);
-
-    expect(
-      screen.getByText(/Space Image of the Day Viewer/i)
-    ).toBeInTheDocument();
-    expect(screen.getByText('Test Space Image')).toBeInTheDocument();
-    expect(screen.getByText('2024-04-26')).toBeInTheDocument();
-    expect(screen.getByAltText('Test Space Image')).toBeInTheDocument();
-    expect(
-      screen.getByText('Test explanation about the space image.')
-    ).toBeInTheDocument();
+    const { asFragment } = render(<Homepage />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

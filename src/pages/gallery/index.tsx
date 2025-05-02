@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useGetMarsPhotosQuery } from '../../redux/apiSlice';
 import '../gallery/photopage.scss';
-import Loader from '../../components/loader/Loader';
-import PhotoItem from '../../components/photo/PhotoItem';
+import Loader from '../../components/common/loader/Loader';
+import PhotoItem from '../../components/gallery/PhotoItem';
 
 const backgroundStyle = {
   backgroundImage: `url(${process.env.PUBLIC_URL}/img/bg_photopage.jpg)`,
@@ -35,7 +35,7 @@ const Photopage = () => {
 
   if (isLoading) {
     return (
-      <div className="photopage" style={backgroundStyle}>
+      <div className="fullscreen-loader" style={backgroundStyle}>
         <Loader />
       </div>
     );

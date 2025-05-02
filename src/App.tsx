@@ -1,14 +1,14 @@
 import './styles/App.scss';
 import { Suspense } from 'react';
-import Navbar from './components/navbar/Navbar';
-import Loader from './components/loader/Loader';
-import AnimatedRoutes from './components/AnimatedRoutes';
+import Navbar from './components/common/navbar/Navbar';
+import Loader from './components/common/loader/Loader';
+import AnimatedRoutes from './components/routing/AnimatedRoutes';
 
 function App() {
   return (
     <>
       <Navbar />
-      <div style={{ backgroundColor: 'black', minHeight: '100vh' }}>
+      <div className="app-container">
         <Suspense fallback={<Loader />}>
           <AnimatedRoutes />
         </Suspense>
