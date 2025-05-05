@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Photopage component should render photos correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="photopage"
+    style="background-image: url(/img/bg_photopage.jpg); background-size: cover; background-position: center; background-repeat: no-repeat;"
+  >
+    <div
+      class="sol-block"
+    >
+      <form
+        class="sol-form"
+      >
+        <label
+          for="sol"
+        >
+          Enter Sol (day on Mars):
+        </label>
+        <input
+          id="sol"
+          type="text"
+          value="1000"
+        />
+      </form>
+    </div>
+    <div
+      class="photo-grid fade-in"
+    >
+      <div
+        class="photo-container"
+      >
+        <div
+          class="mini-loader"
+        />
+        <img
+          alt="Test Camera"
+          loading="lazy"
+          src="https://example.com/photo.jpg"
+          style="opacity: 0; transition: opacity 0.5s ease-in-out; width: 100%; height: auto; display: block;"
+        />
+        <h3>
+          Test Camera
+        </h3>
+        <p>
+          Sol: 1000
+        </p>
+        <p>
+          Date on Earth: 2024-04-20
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

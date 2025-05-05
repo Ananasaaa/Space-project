@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Newspage component should render notifications correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="notifications-page"
+    style="background-image: url(/img/bg_newspage.jpg); background-size: cover; background-position: right center; background-repeat: no-repeat;"
+  >
+    <h1
+      class="page-title"
+    >
+      NASA Notifications
+    </h1>
+    <div
+      class="notifications-list"
+    >
+      <div
+        class="notification-card fade-in"
+      >
+        <h2
+          class="message-type"
+        >
+          🛰️ Test Type
+        </h2>
+        <p
+          class="message-time"
+        >
+          📅 4/24/2024, 3:00:00 PM
+        </p>
+        <p
+          class="message-summary"
+        >
+          📌 Test summary text
+        </p>
+        <p
+          class="message-notes"
+        >
+          🗒️ Notes: Some additional notes
+        </p>
+        <a
+          class="message-link"
+          href="https://example.com/full-message"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          🔗 View Full Message
+        </a>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

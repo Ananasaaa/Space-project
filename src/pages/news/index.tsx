@@ -1,7 +1,7 @@
 import { useGetNasaNotificationsQuery } from '../../redux/apiSlice';
 import '../news/newspage.scss';
-import Loader from '../../components/loader/Loader';
-import { formatNotification } from '../../utils/formatNotification';
+import Loader from '../../components/common/loader/Loader';
+import { formatNotification } from '../../utils/notifications/formatNotification';
 
 const backgroundStyle = {
   backgroundImage: `url(${process.env.PUBLIC_URL}/img/bg_newspage.jpg)`,

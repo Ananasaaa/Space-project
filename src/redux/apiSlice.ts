@@ -46,6 +46,24 @@ export const nasaApi = createApi({
         },
       }),
     }),
+    getLastSevenImg: builder.query({
+      query: () => {
+        const endDate = new Date();
+        const startDate = new Date();
+        startDate.setDate(endDate.getDate() - 6);
+
+        const formatDate = (date: Date) => date.toISOString().split('T')[0];
+
+        return {
+          url: 'planetary/apod',
+          params: {
+            api_key: process.env.REACT_APP_NASA_KEY as string,
+            start_date: formatDate(startDate),
+            end_date: formatDate(endDate),
+          },
+        };
+      },
+    }),
   }),
 });
 
@@ -54,4 +72,5 @@ export const {
   useGetMarsPhotosQuery,
   useGetMarsWeatherQuery,
   useGetNasaNotificationsQuery,
+  useGetLastSevenImgQuery,
 } = nasaApi;

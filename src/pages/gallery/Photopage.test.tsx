@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import Photopage from './index';
 import { useGetMarsPhotosQuery } from '../../redux/apiSlice';
 
@@ -22,11 +22,7 @@ describe('Photopage component', () => {
       error: null,
     });
 
-    render(<Photopage />);
-
-    expect(screen.getByText('Test Camera')).toBeInTheDocument();
-    expect(screen.getByText('Sol: 1000')).toBeInTheDocument();
-    expect(screen.getByText('Date on Earth: 2024-04-20')).toBeInTheDocument();
-    expect(screen.getByAltText('Test Camera')).toBeInTheDocument();
+    const { asFragment } = render(<Photopage />);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

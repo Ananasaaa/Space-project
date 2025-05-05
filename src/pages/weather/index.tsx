@@ -1,8 +1,8 @@
 import { useGetMarsWeatherQuery } from '../../redux/apiSlice';
 import '../weather/weatherpage.scss';
 import { useState } from 'react';
-import Loader from '../../components/loader/Loader';
-import { convertTemp } from '../../utils/convertTemp';
+import Loader from '../../components/common/loader/Loader';
+import { convertTemperature } from '../../utils/converter/convertTemperature';
 
 const backgroundStyle = {
   backgroundImage: `url(${process.env.PUBLIC_URL}/img/bg_weatherpage.jpg)`,
@@ -42,13 +42,13 @@ const Weatherpage = () => {
 
                 <div className="temperature">
                   <p className="temp-high">
-                    Max: {convertTemp(solData.AT?.mx, unit)}
+                    Max: {convertTemperature(solData.AT?.mx, unit)}
                   </p>
                   <p className="temp-low">
-                    Min: {convertTemp(solData.AT?.mn, unit)}
+                    Min: {convertTemperature(solData.AT?.mn, unit)}
                   </p>
                   <p className="temp-avg">
-                    Average: {convertTemp(solData.AT?.av, unit)}
+                    Average: {convertTemperature(solData.AT?.av, unit)}
                   </p>
                 </div>
 

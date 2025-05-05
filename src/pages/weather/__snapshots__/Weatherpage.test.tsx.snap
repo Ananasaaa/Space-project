@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Weatherpage component should render weather cards correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="weatherpage"
+    style="background-image: url(/img/bg_weatherpage.jpg); background-size: cover; background-position: center; background-repeat: no-repeat;"
+  >
+    <div
+      class="weather-container"
+    >
+      <h1
+        class="page-title"
+      >
+        Weather on Mars
+      </h1>
+      <button
+        class="unit-toggle"
+      >
+        Switch to °F
+      </button>
+      <div
+        class="weather-cards"
+      >
+        <div
+          class="weather-card fade-in"
+        >
+          <h2
+            class="sol"
+          >
+            Sol 1000
+          </h2>
+          <p
+            class="date"
+          >
+            4/25/2024
+          </p>
+          <div
+            class="temperature"
+          >
+            <p
+              class="temp-high"
+            >
+              Max: -50°C
+            </p>
+            <p
+              class="temp-low"
+            >
+              Min: -80°C
+            </p>
+            <p
+              class="temp-avg"
+            >
+              Average: -65°C
+            </p>
+          </div>
+          <div
+            class="pressure"
+          >
+            <p>
+              Pressure: 750 Pa
+            </p>
+          </div>
+          <div
+            class="windspeed"
+          >
+            <p>
+              Wind direction: N
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

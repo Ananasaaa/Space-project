@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Homepage component should render the title, date, image, and description without redux store 1`] = `
+<DocumentFragment>
+  <div
+    class="homepage"
+    style="background-image: url(/img/bg_homepage.jpg); background-size: cover; background-position: center; background-repeat: no-repeat;"
+  >
+    <h1>
+      Space Image of the Day Viewer
+    </h1>
+    <div
+      class="image-container fade-in"
+    >
+      <h2>
+        Test Space Image
+      </h2>
+      <p>
+        2024-04-26
+      </p>
+      <img
+        alt="Test Space Image"
+        class="image"
+        loading="lazy"
+        src="https://example.com/image.jpg"
+      />
+      <p
+        class="description"
+      >
+        Test explanation about the space image.
+      </p>
+    </div>
+    <button
+      class="gallery-button"
+    >
+      See last 7 days
+    </button>
+  </div>
+</DocumentFragment>
+`;

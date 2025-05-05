@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 
-const getError = (error: unknown): JSX.Element | null => {
+const renderError = (error: unknown): JSX.Element | null => {
   if (!error) return null;
 
   if (typeof error === 'object' && error !== null) {
@@ -14,4 +14,4 @@ const getError = (error: unknown): JSX.Element | null => {
 
   return <div>An unknown error occurred</div>;
 };
-export default getError;
+export default renderError;
