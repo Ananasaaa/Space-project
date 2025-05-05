@@ -2,6 +2,7 @@ import { useGetNasaNotificationsQuery } from '../../redux/apiSlice';
 import '../news/newspage.scss';
 import Loader from '../../components/common/loader/Loader';
 import { formatNotification } from '../../utils/notifications/formatNotification';
+import { useState } from 'react';
 
 const backgroundStyle = {
   backgroundImage: `url(${process.env.PUBLIC_URL}/img/bg_newspage.jpg)`,
@@ -11,6 +12,9 @@ const backgroundStyle = {
 };
 
 const Newspage = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [showDetails, setShowDetails] = useState(false);
+
   const { data, isLoading, isError } = useGetNasaNotificationsQuery({
     startDate: '2024-04-01',
     endDate: '2024-04-25',
@@ -22,6 +26,13 @@ const Newspage = () => {
   return (
     <div className="notifications-page" style={backgroundStyle}>
       <h1 className="page-title">NASA Notifications</h1>
+      <input
+        type="text"
+        className="search-input"
+        placeholder="Search notifications..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
       <div className="notifications-list">
         {data.slice(0, 10).map((notification: any) => {
           const { summary, notes } = formatNotification(
@@ -38,7 +49,17 @@ const Newspage = () => {
                 📅 {new Date(notification.messageIssueTime).toLocaleString()}
               </p>
               <p className="message-summary">📌 {summary}</p>
-              {notes && <p className="message-notes">🗒️ {notes}</p>}
+              {notes && (
+                <>
+                  <button
+                    className="details-toggle"
+                    onClick={() => setShowDetails((prev) => !prev)}
+                  >
+                    {showDetails ? '🔽 Hide Details' : '🔼 Show Details'}
+                  </button>
+                  {showDetails && <p className="message-notes">🗒️ {notes}</p>}
+                </>
+              )}
               <a
                 href={notification.messageURL}
                 className="message-link"

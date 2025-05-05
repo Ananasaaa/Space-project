@@ -1,11 +1,14 @@
 export const formatNotification = (body: string) => {
-  const summaryMatch = body.match(/Summary:\s*(.*?)\s*(##|Notes:|$)/s);
-  const summary = summaryMatch
-    ? summaryMatch[1].trim()
-    : 'No summary available';
+  const withoutLinks = body.replace(/https?:\/\/\S+/g, '');
 
-  const noteMatch = body.match(/Notes:\s*(.*?)\s*$/s);
-  const notes = noteMatch ? noteMatch[1].trim() : '';
+  const lines = withoutLinks
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  const summary = lines[0] || 'No summary available';
+
+  const notes = lines.slice(1).join(' ').trim();
 
   return {
     summary,

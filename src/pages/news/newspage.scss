@@ -77,11 +77,6 @@
       color: $color-hover;
       text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
-
-      &:hover {
-        color: #00bfff;
-        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      }
     }
 
     .continue-reading {
@@ -93,11 +88,6 @@
       color: $color-hover;
       text-decoration: none;
       transition: color 0.3s ease, text-shadow 0.3s ease;
-
-      &:hover {
-        color: #00bfff;
-        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-      }
     }
   }
 
@@ -136,4 +126,28 @@
   }
 }
 
+.search-input {
+  margin: 20px auto;
+  padding: 10px 16px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: transparent;
+  color: $color-hover;
+}
+
+.details-toggle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $color-hover;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  border: none;
+  background-color: transparent;
+  padding-right: 10px;
+  cursor: pointer;
+}
 
